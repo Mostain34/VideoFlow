@@ -1,16 +1,21 @@
-# VideoFlow
+# VideoFlow 1.1
 
-A minimal Android direct-media downloader starter using Kotlin, Jetpack Compose Material 3 and Android DownloadManager.
+Android direct-media downloader and public social-video metadata preview starter.
 
-## Scope
-- Downloads direct HTTP/HTTPS media-file URLs that the user is authorized to save.
-- Does not extract platform page URLs, bypass DRM, login restrictions, or platform download controls.
-- `DownloadManager` stores files in the public Movies folder.
+## Features
+- YouTube oEmbed metadata preview: title, channel and thumbnail.
+- Public Facebook Video oEmbed detection and embedded player preview.
+- Direct HTTP/HTTPS media downloads only after a HEAD Content-Type check.
+- Rejects platform page URLs and HTML responses instead of saving them as `.bin`.
+- Stores authorized direct media downloads in Movies.
+
+## Important limitations
+- YouTube oEmbed provides metadata, not a downloadable media stream. This app does not extract YouTube streams or bypass platform restrictions.
+- Meta's current oEmbed response no longer includes author or thumbnail fields. The app uses the official embedded player HTML where available.
+- Facebook/YouTube platform URLs are preview-only. Download is available only for direct media URLs the user is authorized to save.
+- Quality selection is not fabricated: separate qualities can only be shown when a permitted source explicitly supplies them. A direct URL downloads the original resource.
 
 ## Build
-The included GitHub Actions workflow builds a debug APK on pushes to `main` or manually through Actions > Build VideoFlow APK > Run workflow.
+Use GitHub Actions > Build VideoFlow APK > Run workflow, or push to `main`.
 
-APK artifact: `app-debug.apk`.
-
-## Package
-`com.example.videoflow`
+Package: `com.example.videoflow`
