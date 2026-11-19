@@ -1,21 +1,20 @@
-# VideoFlow 1.1
+# VideoFlow 2.0 (development build)
 
-Android direct-media downloader and public social-video metadata preview starter.
+## Included in this source update
+- Simple in-app browser (WebView) with address/search field.
+- Light/Dark theme toggle.
+- Existing YouTube oEmbed metadata preview and Facebook oEmbed embed preview.
+- Direct URL downloads with MIME-type validation for video, audio and subtitle files.
+- MP3 download when the supplied direct source is `audio/mpeg`; SRT/VTT download when direct subtitle URLs are supplied.
+- DownloadManager history/status screen.
 
-## Features
-- YouTube oEmbed metadata preview: title, channel and thumbnail.
-- Public Facebook Video oEmbed detection and embedded player preview.
-- Direct HTTP/HTTPS media downloads only after a HEAD Content-Type check.
-- Rejects platform page URLs and HTML responses instead of saving them as `.bin`.
-- Stores authorized direct media downloads in Movies.
-
-## Important limitations
-- YouTube oEmbed provides metadata, not a downloadable media stream. This app does not extract YouTube streams or bypass platform restrictions.
-- Meta's current oEmbed response no longer includes author or thumbnail fields. The app uses the official embedded player HTML where available.
-- Facebook/YouTube platform URLs are preview-only. Download is available only for direct media URLs the user is authorized to save.
-- Quality selection is not fabricated: separate qualities can only be shown when a permitted source explicitly supplies them. A direct URL downloads the original resource.
+## Not yet implemented
+- True pause/resume controls. Android DownloadManager exposes status but no public pause/resume API; a separate HTTP Range-capable engine is needed.
+- Multi-quality extraction/selection. The app currently offers Original only; 360p/480p/720p/1080p can be listed only when a permitted source provides separate stream URLs.
+- Automatic subtitle discovery, audio extraction/transcoding, and platform stream extraction.
+- YouTube/Facebook page URLs are preview-only; no DRM, login, paywall, or platform restriction bypass.
 
 ## Build
-Use GitHub Actions > Build VideoFlow APK > Run workflow, or push to `main`.
+Push to `main`, or run GitHub Actions > Build VideoFlow APK > Run workflow.
 
 Package: `com.example.videoflow`
