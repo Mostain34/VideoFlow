@@ -4,7 +4,8 @@
         android:allowBackup="true"
         android:label="VideoFlow"
         android:theme="@android:style/Theme.Material.Light.NoActionBar"
-        android:usesCleartextTraffic="false">
+        android:usesCleartextTraffic="false"
+        android:extractNativeLibs="true">
         <activity
             android:name=".MainActivity"
             android:exported="true">

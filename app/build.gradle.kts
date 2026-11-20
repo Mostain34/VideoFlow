@@ -3,7 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
-
 android {
     namespace = "com.example.videoflow"
     compileSdk = 35
@@ -14,14 +13,29 @@ android {
         targetSdk = 35
         versionCode = 2
         versionName = "1.0"
+
+        ndk {
+            abiFilters += listOf(
+                "arm64-v8a",
+                "armeabi-v7a",
+                "x86",
+                "x86_64"
+            )
+        }
     }
 
-    buildFeatures { compose = true }
+    buildFeatures {
+        compose = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions { jvmTarget = "17" }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
@@ -32,4 +46,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    // VideoFlow download engine
+    implementation("io.github.junkfood02.youtubedl-android:library:0.18.1")
+    implementation("io.github.junkfood02.youtubedl-android:ffmpeg:0.18.1")
 }
